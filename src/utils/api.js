@@ -3,12 +3,16 @@
 
 import axios from 'axios';
 
+// Get API URL from environment variable (for production/development flexibility)
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 // Create axios instance with base URL
 const api = axios.create({
-  baseURL: 'https://backend-663z.onrender.com/',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 10000, // 10 second timeout
 });
 
 /**
